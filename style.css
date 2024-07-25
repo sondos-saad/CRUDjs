@@ -1,0 +1,38 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    color: #fff;
+    /* font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif; */
+  }
+  body{
+    background-color: rgb(244, 247, 247);
+    color: black;
+  }
+  section h1{
+    text-align: center;
+    color: black;
+    margin-bottom: 2rem;
+  }
+  th,tr,td{
+    color: #000;
+  }
+  label{
+    color: gray;
+  }
+  button{
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 5px;
+  }
+  .btnUpdate{
+    background-color: #149306;
+  }
+  .btnDelete{
+    background-color: red;
+  }
+  input{
+    color: #000;
+  }
