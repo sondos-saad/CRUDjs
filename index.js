@@ -6,7 +6,7 @@ const productQuantityInput =document.getElementById('productQuantityInput');
 const productDescriptionInput =document.getElementById('productDescriptionInput')
 const addProductBtn = document.getElementById('addProductBtn');
 // const updateProductBtn = document.getElementById('updateProductBtn');
-// const searchInput =document.getElementById('searchInput')
+const searchInput =document.getElementById('searchInput')
 let productContainer = [];
 
 if(localStorage.getItem('products')!==null){
@@ -50,6 +50,32 @@ function clearInput(){
     productQuantityInput.value = '';
     productDescriptionInput.value = '';
 }
+function searchProduct(term){
+    let addDataProduct = '';
+    productContainer.forEach((product,index) => {
+        if(productContainer[index].name.toLowerCase().includes(term.toLowerCase())){
+            addDataProduct += `<tr>
+            <td>${product.name}</td>
+            <td>${product.category}</td>
+            <td>${product.price}</td>
+            <td>${product.discount}</td>
+            <td>${product.quantity}</td>
+            <td>${product.description}</td>
+            <td>
+            <button onclick="updateProduct(${index})" class="btnUpdate">Update</button>
+            </td>
+            <td>
+            <button onclick="deleteProduct(${index})" class="btnDelete">Delete</button>
+            </td>
+            </tr>`
+        }
+    });
+    document.getElementById('showData').innerHTML = addDataProduct;
+}
+
+searchInput.addEventListener('input', () => {  
+    searchProduct(searchInput.value);
+});
 
 function displayProducts(){
    let addDataProduct = '';
