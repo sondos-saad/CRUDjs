@@ -5,7 +5,7 @@ const productDiscountInput =document.getElementById('productDiscountInput');
 const productQuantityInput =document.getElementById('productQuantityInput');
 const productDescriptionInput =document.getElementById('productDescriptionInput')
 const addProductBtn = document.getElementById('addProductBtn');
-// const updateProductBtn = document.getElementById('updateProductBtn');
+const updateProductBtn = document.getElementById('updateProductBtn');
 const searchInput =document.getElementById('searchInput')
 let productContainer = [];
 
@@ -27,7 +27,7 @@ function addProduct(){
     localStorage.setItem('products',JSON.stringify(productContainer));
     displayProducts();
     clearInput();
-    console.log(productContainer);
+
 } 
 
 addProductBtn.addEventListener('click',addProduct);
@@ -37,10 +37,7 @@ function deleteProduct(index){
     localStorage.setItem('products',JSON.stringify(productContainer));
     displayProducts();
 }
-function updateProduct(index){
-    productNameInput.value = productContainer[index].name;  
-    productCategoryInput.value = productContainer[index].category;  
-}
+
 
 function clearInput(){
     productNameInput.value = '';
@@ -88,7 +85,7 @@ function displayProducts(){
     <td>${product.quantity}</td>
     <td>${product.description}</td>
     <td>
-    <button onclick="updateProduct(${index})" class="btnUpdate">Update</button>
+    <button onclick="setForm(${index})" class="btnUpdate">Update</button>
     </td>
     <td>
     <button onclick="deleteProduct(${index})" class="btnDelete">Delete</button>
@@ -97,3 +94,31 @@ function displayProducts(){
    });
    document.getElementById('showData').innerHTML = addDataProduct;
 }
+ 
+let x = 0;
+function setForm(productIndex){
+    x = productIndex;
+    productNameInput.value = productContainer[productIndex].name;
+    productCategoryInput.value = productContainer[productIndex].category;
+    productPriceInput.value = productContainer[productIndex].price;
+    productDiscountInput.value = productContainer[productIndex].discount;
+    productQuantityInput.value = productContainer[productIndex].quantity;
+    productDescriptionInput.value = productContainer[productIndex].description;
+    addProductBtn.classList.add('disabled');
+    updateProductBtn.classList.remove('disabled');
+}
+function updateProduct(){
+    productContainer[x].name =  productNameInput.value ;  
+     productContainer[x].category = productCategoryInput.value; 
+     productContainer[x].price = productPriceInput.value; 
+     productContainer[x].discount = productDiscountInput.value; 
+     productContainer[x].quantity = productQuantityInput.value; 
+     productContainer[x].description = productDescriptionInput.value; 
+     addProductBtn.classList.remove('disabled');
+    updateProductBtn.classList.add('disabled');
+     localStorage.setItem('products',JSON.stringify(productContainer));
+    displayProducts(); 
+    clearInput();
+}
+
+updateProductBtn.addEventListener("click" , updateProduct());
