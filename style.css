@@ -3,39 +3,47 @@
     margin: 0;
     box-sizing: border-box;
     color: #fff;
-    /* font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif; */
-  }
-  body{
+}
+
+body {
     background-color: rgb(244, 247, 247);
     color: black;
-  }
-  section h1{
+}
+
+section h1 {
     text-align: center;
     color: black;
     margin-bottom: 2rem;
-  }
-  th,tr,td{
+}
+
+th, tr, td {
     color: #000;
-  }
-  label{
+}
+
+label {
     color: gray;
-  }
-  button{
+}
+
+button {
     background-color: #000;
     color: #fff;
     border: none;
     padding: 0.5rem;
     border-radius: 5px;
-  }
-  .btnUpdate{
+}
+
+.btnUpdate {
     background-color: #149306;
-  }
-  .btnDelete{
+}
+
+.btnDelete {
     background-color: red;
-  }
-  input{
+}
+
+input {
     color: #000;
-  }
-  .disabled{
+}
+
+.disabled {
     display: none;
-  }
+}
